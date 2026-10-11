@@ -13,3 +13,6 @@ Static, offline-first tracker. No build step. Research and direction choice: `re
 4. Paste product_id + product link into `config.js`, bump `VERSION` in `sw.js`, redeploy.
 
 Tests: `/workspace/dialysis-tests/test_app.py` (Playwright, Gumroad mocked).
+
+## Terms of Use
+`terms.html` holds the Terms of Use. On first open (and for existing users once) the app shows a required agree step before anything else. The agreement is stored on the device under `dialysislog:terms` as `{agreed, version, at}`. **When you change terms.html, also change `TERMS_VERSION` in config.js and bump `VERSION` in sw.js**; everyone is then asked to agree again.

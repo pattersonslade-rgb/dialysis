@@ -4,6 +4,10 @@
   'use strict';
   var C = window.DIALYSIS_CONFIG || {};
   var KEY = 'dialysislog:v1';
+  var TERMS_KEY = 'dialysislog:terms';
+  var TERMS_VERSION = C.TERMS_VERSION || '2026-10-11';
+  function termsRecord() { try { return JSON.parse(localStorage.getItem(TERMS_KEY)); } catch (e) { return null; } }
+  function termsOk() { var r = termsRecord(); return !!(r && r.version === TERMS_VERSION && r.agreed === true); }
   var ML_PER_OZ = 29.5735;
   var S;
 
@@ -146,6 +150,22 @@
   function numInput(id, label, val, hint) { return '<label class="field"><span>' + label + '</span><input type="text" inputmode="decimal" id="' + id + '" value="' + (val == null ? '' : esc(val)) + '" autocomplete="off"' + (hint ? ' placeholder="' + esc(hint) + '"' : '') + '></label>'; }
 
   /* ---------------- screens ---------------- */
+  function vTerms() {
+    var prev = termsRecord();
+    return '<main id="main" class="terms-gate"><h1>' + (prev && prev.agreed ? 'Our terms have changed' : 'Before you start') + '</h1>' +
+      '<p>Please read this once. It takes a minute.</p>' +
+      '<div class="card" id="terms-summary"><ul class="tsum">' +
+      '<li><b>Not medical advice.</b> Dialysis Log is not a medical device. It does not diagnose, treat or recommend anything. It only records the numbers you enter.</li>' +
+      '<li><b>Follow your care team.</b> You are responsible for what you enter. Your care team’s advice always comes first.</li>' +
+      '<li><b>Not for emergencies.</b> In an emergency, call your local emergency number (911 in the US).</li>' +
+      '<li><b>Your data stays on this phone.</b> Nobody else can see it or recover it, so save backups.</li>' +
+      '<li><b>Provided as is,</b> with no warranty. The maker is not liable for health outcomes, decisions or lost data, as far as the law allows.</li>' +
+      '</ul><p class="tlinks"><a href="terms.html" id="terms-link">Read the full Terms of Use</a><a href="privacy.html" id="privacy-link">Read the Privacy page</a></p></div>' +
+      '<label class="agree" for="agree-box"><input type="checkbox" id="agree-box"><span>I understand this is not medical advice and I agree to the Terms of Use.</span></label>' +
+      '<button class="btn" data-act="agree" id="agree-btn" disabled aria-describedby="agree-hint">Continue</button>' +
+      '<p class="small muted" id="agree-hint">Tick the box to continue. Terms version ' + esc(TERMS_VERSION) + '.</p></main>';
+  }
+
   function vSetup() {
     var st = S.settings;
     return '<main id="main"><h1>Welcome to Dialysis Log</h1><p>Just one quick screen. You can change all of this later in More → Settings, and you can skip it.</p>' + DISCLAIMER +
@@ -334,7 +354,7 @@
       '<p class="small muted">' + (S.settings.lastBackup ? 'Last backup: ' + esc(fmtDay(dayKey(S.settings.lastBackup))) : 'No backup saved yet.') + '</p><input type="file" id="restore-file" accept=".json,application/json" hidden></div>' +
       '<div class="card"><h3>Pro ' + (pro ? '✓' : '<span class="lock">' + esc(C.PRO_PRICE || '') + '</span>') + '</h3><ul class="list">' +
       '<li><a class="grow" href="#/labs">Lab results' + (pro ? '' : ' 🔒') + '</a></li><li><a class="grow" href="#/meds">Medicine list' + (pro ? '' : ' 🔒') + '</a></li><li><a class="grow" href="#/report">Printable summary' + (pro ? '' : ' 🔒') + '</a></li><li><a class="grow" href="#/pro">' + (pro ? 'Your Pro license' : 'About Pro / enter license key') + '</a></li></ul></div>' +
-      '<p><a class="btn alt" href="#/settings">Settings</a></p><p><a class="btn alt" href="#/history">Past days</a></p><p><a class="btn alt" href="#/about">About, privacy & help</a></p>' + DISCLAIMER + '</main>' + nav('#/more');
+      '<p><a class="btn alt" href="#/settings">Settings</a></p><p><a class="btn alt" href="#/history">Past days</a></p><p><a class="btn alt" href="#/about">About, privacy & help</a></p><p><a class="btn alt" href="terms.html" id="more-terms">Terms of Use</a></p>' + DISCLAIMER + '</main>' + nav('#/more');
   }
   function vPro() {
     var pro = isPro(), st = S.settings, ready = !!C.GUMROAD_PRODUCT_ID;
@@ -364,7 +384,8 @@
       '<div class="card"><h3>Privacy</h3><p class="small" id="privacy">No accounts, no ads, no analytics, no trackers. What you enter stays only on this phone, in this browser’s storage, and is never uploaded. After the first visit the app works without internet. The one exception: if you enter a Pro license key, it is sent to Gumroad (the store) to check it. <a href="privacy.html">Full privacy page</a>.</p></div>' +
       '<div class="card"><h3>Put it on your home screen</h3><p class="small"><b>iPhone:</b> in Safari tap Share → “Add to Home Screen”. <b>Android:</b> in Chrome tap ⋮ → “Add to Home screen” / “Install app”.</p></div>' +
       '<div class="card"><h3>New phone?</h3><p class="small">More → Save backup file, move the file to the new phone, then More → Restore. Re-enter your Pro key if you have one.</p></div>' +
-      '<p class="small muted">Version 1.0.0</p></main>' + nav('#/more');
+      '<div class="card"><h3>Terms of Use</h3><p class="small">Dialysis Log is provided as is and is not medical advice. <a href="terms.html" id="about-terms">Read the Terms of Use</a>.</p>' + (function () { var r = termsRecord(); return r && r.at ? '<p class="small muted" id="agreed-on">You agreed to version ' + esc(r.version) + ' on ' + esc(new Date(r.at).toLocaleDateString()) + '.</p>' : ''; })() + '</div>' +
+      '<p class="small muted">Version 1.1.0</p></main>' + nav('#/more');
   }
 
   /* ---------------- router ---------------- */
@@ -372,7 +393,8 @@
   function render() {
     applyLook();
     var h = location.hash || '#/', html;
-    if (!S.settings.setupDone) html = vSetup();
+    if (!termsOk()) html = vTerms();
+    else if (!S.settings.setupDone) html = vSetup();
     else if (h === '#/' || h === '#') html = vToday();
     else if (h === '#/history') html = vHistory();
     else if (h.indexOf('#/day/') === 0) html = vDay(h.slice(6));
@@ -458,6 +480,11 @@
         st.limitMl = n ? fromUnit(n) : null; st.whose = $('#su-whose').value.trim().slice(0, 40);
         st.setupDone = true; save(); go('#/'); break;
       }
+      case 'agree': {
+        var bx = $('#agree-box'); if (!bx || !bx.checked) return toast('Tick the box first');
+        try { localStorage.setItem(TERMS_KEY, JSON.stringify({ agreed: true, version: TERMS_VERSION, at: new Date().toISOString() })); } catch (err) { return toast('Could not save. Phone storage may be full.', 5000); }
+        go('#/'); render(); window.scrollTo(0, 0); break;
+      }
       case 'su-skip': st.setupDone = true; save(); go('#/'); break;
       case 'add': { var c = st.cups.filter(function (c) { return c.id === id; })[0]; if (c) addFluid(c.ml, c.label); break; }
       case 'add-other': amountSheet('Add a drink', function (w) { var a = num($('#amt').value); if (!a || isNaN(a) || a <= 0) return toast('Type an amount'); var lb = $('#amt-label').value.trim(); closeSheet(); addFluid(fromUnit(a), lb); }); break;
@@ -523,6 +550,7 @@
     }
   });
   document.addEventListener('change', function (e) {
+    if (e.target.id === 'agree-box') { var ab = $('#agree-btn'); if (ab) ab.disabled = !e.target.checked; return; }
     if (e.target.id !== 'restore-file' || !e.target.files[0]) return;
     var rd = new FileReader();
     rd.onload = function () {
@@ -538,7 +566,7 @@
   });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeSheet(); });
   window.addEventListener('hashchange', function () { closeSheet(); render(); window.scrollTo(0, 0); });
-  window.addEventListener('storage', function (e) { if (e.key === KEY) { load(); render(); } });
+  window.addEventListener('storage', function (e) { if (e.key === KEY || e.key === TERMS_KEY) { load(); render(); } });
   var lastDay = today();
   setInterval(function () { if (today() !== lastDay) { lastDay = today(); render(); } }, 30000);
   document.addEventListener('visibilitychange', function () { if (!document.hidden && today() !== lastDay) { lastDay = today(); render(); } });

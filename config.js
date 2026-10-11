@@ -20,6 +20,7 @@ window.DIALYSIS_CONFIG = {
   MAX_ACTIVATIONS: 5,
   RECHECK_DAYS: 30,
   SUPPORT_EMAIL: "",
+  TERMS_VERSION: "2026-10-11",                // change this when terms.html changes: everyone is asked to agree again
 
   DEV_MODE: false,
   DEV_UNLOCK_CODE_SHA256: [

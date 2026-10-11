@@ -1,8 +1,8 @@
 /* Dialysis Log service worker: makes the app work fully offline.
  * Bump VERSION whenever you publish changes. */
-var VERSION = 'dialysis-v1.0.0';
+var VERSION = 'dialysis-v1.1.0';
 var ASSETS = [
-  './', 'index.html', 'styles.css', 'app.js', 'config.js', 'manifest.webmanifest', 'privacy.html',
+  './', 'index.html', 'styles.css', 'app.js', 'config.js', 'manifest.webmanifest', 'privacy.html', 'terms.html',
   'icons/icon.svg', 'icons/icon-192.png', 'icons/icon-512.png', 'icons/maskable-512.png', 'icons/apple-touch-icon.png', 'icons/favicon-32.png'
 ];
 self.addEventListener('install', function (e) {
@@ -19,9 +19,13 @@ self.addEventListener('fetch', function (e) {
   if (req.method !== 'GET' || new URL(req.url).origin !== self.location.origin) return;
   var isNav = req.mode === 'navigate';
   e.respondWith(caches.open(VERSION).then(function (cache) {
-    return cache.match(isNav ? 'index.html' : req, { ignoreSearch: true }).then(function (hit) {
+    // Pages like terms.html / privacy.html are served as themselves; the app shell (and any unknown page) falls back to index.html.
+    var path = new URL(req.url).pathname, isPage = isNav && /\.html$/.test(path) && !/\/index\.html$/.test(path);
+    var key = isNav && !isPage ? 'index.html' : req;
+    return cache.match(key, { ignoreSearch: true }).then(function (hit) {
+      if (!hit && isPage) return fetch(req).catch(function () { return cache.match('index.html'); });
       var net = fetch(req).then(function (res) {
-        if (res && res.ok && res.type === 'basic') cache.put(isNav ? 'index.html' : req, res.clone());
+        if (res && res.ok && res.type === 'basic') cache.put(key, res.clone());
         return res;
       }).catch(function () { return hit; });
       if (hit) { e.waitUntil(net.catch(function () {})); return hit; }
