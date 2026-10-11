@@ -385,7 +385,7 @@
       '<div class="card"><h3>Put it on your home screen</h3><p class="small"><b>iPhone:</b> in Safari tap Share → “Add to Home Screen”. <b>Android:</b> in Chrome tap ⋮ → “Add to Home screen” / “Install app”.</p></div>' +
       '<div class="card"><h3>New phone?</h3><p class="small">More → Save backup file, move the file to the new phone, then More → Restore. Re-enter your Pro key if you have one.</p></div>' +
       '<div class="card"><h3>Terms of Use</h3><p class="small">Dialysis Log is provided as is and is not medical advice. <a href="terms.html" id="about-terms">Read the Terms of Use</a>.</p>' + (function () { var r = termsRecord(); return r && r.at ? '<p class="small muted" id="agreed-on">You agreed to version ' + esc(r.version) + ' on ' + esc(new Date(r.at).toLocaleDateString()) + '.</p>' : ''; })() + '</div>' +
-      '<p class="small muted">Version 1.1.0</p></main>' + nav('#/more');
+      '<p class="small muted">Version 1.1.1</p></main>' + nav('#/more');
   }
 
   /* ---------------- router ---------------- */

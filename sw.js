@@ -1,6 +1,6 @@
 /* Dialysis Log service worker: makes the app work fully offline.
  * Bump VERSION whenever you publish changes. */
-var VERSION = 'dialysis-v1.1.0';
+var VERSION = 'dialysis-v1.1.1';
 var ASSETS = [
   './', 'index.html', 'styles.css', 'app.js', 'config.js', 'manifest.webmanifest', 'privacy.html', 'terms.html',
   'icons/icon.svg', 'icons/icon-192.png', 'icons/icon-512.png', 'icons/maskable-512.png', 'icons/apple-touch-icon.png', 'icons/favicon-32.png'

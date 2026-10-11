@@ -7,7 +7,7 @@ Static, offline-first tracker. No build step. Research and direction choice: `re
 - Pro unlock = Gumroad per-buyer license key, verified once from the browser (api.gumroad.com allows CORS), then offline; refunds/chargebacks/disabled keys refused and re-checked ~monthly; 5 activations per key. Licenses never travel in backups.
 
 ## Gumroad setup
-1. New digital product "Dialysis Log Pro", one-time price (config shows $2.99 – change `PRO_PRICE` to match).
+1. New digital product "Dialysis Log Pro", one-time price. Done: product `iJvHWo0Z03uhw7LEoJTuxA==`, https://sladepatterson.gumroad.com/l/aeklk, $4.99 (keep `PRO_PRICE` in config.js matching Gumroad).
 2. Tick "Generate a unique license key per sale"; copy the product_id it shows.
 3. Receipt text: "Open Dialysis Log → More → About Pro / enter license key, while online."
 4. Paste product_id + product link into `config.js`, bump `VERSION` in `sw.js`, redeploy.
