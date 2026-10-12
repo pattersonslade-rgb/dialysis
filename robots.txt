@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://pattersonslade-rgb.github.io/dialysis/sitemap.xml
