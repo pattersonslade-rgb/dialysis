@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dialysis Log · Printable weekly log sheet</title><meta name="description" content="Free printable weekly dialysis log sheet: weight before and after, blood pressure, fluid removed and daily drinks. Not medical advice.">
+<link rel="canonical" href="https://pattersonslade-rgb.github.io/dialysis/log-sheet.html">
+<link rel="alternate" hreflang="en" href="https://pattersonslade-rgb.github.io/dialysis/log-sheet.html"><link rel="alternate" hreflang="es" href="https://pattersonslade-rgb.github.io/dialysis/log-sheet-es.html">
+<meta name="theme-color" content="#0B3D91"><link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<style>
+*{box-sizing:border-box}body{font:16px/1.4 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:#111;background:#fff;margin:0;padding:16px}
+.bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:12px}.bar a,.bar button{font:inherit;font-size:18px;min-height:48px;padding:10px 16px;border-radius:12px;border:2px solid #0B3D91;color:#0B3D91;background:#fff;text-decoration:none;cursor:pointer}.bar button{background:#0B3D91;color:#fff;font-weight:700}
+h1{font-size:24px;margin:0 0 4px}.sub{margin:0 0 10px;font-size:14px}
+.meta{display:grid;grid-template-columns:1fr 1fr 1.4fr;gap:10px;margin-bottom:10px;font-size:14px}.meta div{border-bottom:1.5px solid #111;padding-top:14px}
+.wrap{overflow-x:auto}table{border-collapse:collapse;width:100%;min-width:760px;table-layout:fixed}th,td{border:1.5px solid #111;padding:6px;font-size:13px;vertical-align:top}thead th{background:#E8EEF9;text-align:left}
+tbody th{text-align:left;width:9%}tbody td,tbody th{height:64px}td.yn{color:#666;font-size:12px;width:7%}th.notes{width:20%}th.drinks{width:16%}
+.foot{display:flex;gap:14px;align-items:center;margin-top:12px;font-size:12px}.foot svg{width:84px;height:84px;flex:none}.tip{font-size:14px;color:#444}
+a{color:#0B3D91}
+@media print{@page{size:landscape;margin:10mm}body{padding:0}.noprint{display:none!important}.wrap{overflow:visible}table{min-width:0}thead th{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+</style></head><body>
+<div class="bar noprint"><a href="./">‹ Back to the app</a><button type="button" id="print-btn" onclick="window.print()">Print this sheet</button><a href="log-sheet-es.html" lang="es" hreflang="es">En español</a></div>
+<p class="tip noprint">Tip: print several copies. On a phone, use Share → Print, or Print → Save as PDF.</p>
+<main id="sheet"><h1>Weekly dialysis log</h1><p class="sub">Fill in by hand. Write only the numbers you measure and the limit your care team gave you.</p>
+<div class="meta"><div>Name:</div><div>Week of:</div><div>Daily fluid limit from your care team:</div></div>
+<div class="wrap"><table id="log-table"><thead><tr><th scope="col">Day / date</th><th scope="col">Session?</th><th scope="col">Weight before</th><th scope="col">Weight after</th><th scope="col">BP before</th><th scope="col">BP after</th><th scope="col">Fluid removed (UF)</th><th scope="col" class="drinks">Drinks today (tally or total)</th><th scope="col" class="notes">Notes</th></tr></thead><tbody><tr><th scope="row">Mon<span class="d"></span></th><td class="yn">Y / N</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><th scope="row">Tue<span class="d"></span></th><td class="yn">Y / N</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><th scope="row">Wed<span class="d"></span></th><td class="yn">Y / N</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><th scope="row">Thu<span class="d"></span></th><td class="yn">Y / N</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><th scope="row">Fri<span class="d"></span></th><td class="yn">Y / N</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><th scope="row">Sat<span class="d"></span></th><td class="yn">Y / N</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><th scope="row">Sun<span class="d"></span></th><td class="yn">Y / N</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></tbody></table></div>
+<div class="foot"><div id="qr" aria-label="QR code that opens Dialysis Log" role="img"></div><div><b>Dialysis Log</b> – Free app, no account, works offline:<br><span id="app-link">pattersonslade-rgb.github.io/dialysis</span><br>Not medical advice. This sheet only records the numbers you write. Always follow your care team.</div></div>
+</main>
+<script src="vendor/qrcode.js"></script>
+<script>(function(){try{var q=qrcode(0,'M');q.addData('https://pattersonslade-rgb.github.io/dialysis/?ref=print');q.make();var n=q.getModuleCount(),m=2,d='';for(var r=0;r<n;r++)for(var c=0;c<n;c++)if(q.isDark(r,c))d+='M'+(c+m)+' '+(r+m)+'h1v1h-1z';document.getElementById('qr').innerHTML='<svg viewBox="0 0 '+(n+2*m)+' '+(n+2*m)+'" shape-rendering="crispEdges"><rect width="100%" height="100%" fill="#fff"/><path d="'+d+'" fill="#000"/></svg>';}catch(e){}
+if('serviceWorker' in navigator&&location.protocol!=='file:')navigator.serviceWorker.register('sw.js').catch(function(){});})();</script>
+</body></html>

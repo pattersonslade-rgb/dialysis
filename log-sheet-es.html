@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dialysis Log · Hoja semanal de registro para imprimir</title><meta name="description" content="Hoja semanal de registro de diálisis gratis para imprimir: peso antes y después, presión arterial, líquido retirado y bebidas del día. No es consejo médico.">
+<link rel="canonical" href="https://pattersonslade-rgb.github.io/dialysis/log-sheet-es.html">
+<link rel="alternate" hreflang="en" href="https://pattersonslade-rgb.github.io/dialysis/log-sheet.html"><link rel="alternate" hreflang="es" href="https://pattersonslade-rgb.github.io/dialysis/log-sheet-es.html">
+<meta name="theme-color" content="#0B3D91"><link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<style>
+*{box-sizing:border-box}body{font:16px/1.4 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:#111;background:#fff;margin:0;padding:16px}
+.bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:12px}.bar a,.bar button{font:inherit;font-size:18px;min-height:48px;padding:10px 16px;border-radius:12px;border:2px solid #0B3D91;color:#0B3D91;background:#fff;text-decoration:none;cursor:pointer}.bar button{background:#0B3D91;color:#fff;font-weight:700}
+h1{font-size:24px;margin:0 0 4px}.sub{margin:0 0 10px;font-size:14px}
+.meta{display:grid;grid-template-columns:1fr 1fr 1.4fr;gap:10px;margin-bottom:10px;font-size:14px}.meta div{border-bottom:1.5px solid #111;padding-top:14px}
+.wrap{overflow-x:auto}table{border-collapse:collapse;width:100%;min-width:760px;table-layout:fixed}th,td{border:1.5px solid #111;padding:6px;font-size:13px;vertical-align:top}thead th{background:#E8EEF9;text-align:left}
+tbody th{text-align:left;width:9%}tbody td,tbody th{height:64px}td.yn{color:#666;font-size:12px;width:7%}th.notes{width:20%}th.drinks{width:16%}
+.foot{display:flex;gap:14px;align-items:center;margin-top:12px;font-size:12px}.foot svg{width:84px;height:84px;flex:none}.tip{font-size:14px;color:#444}
+a{color:#0B3D91}
+@media print{@page{size:landscape;margin:10mm}body{padding:0}.noprint{display:none!important}.wrap{overflow:visible}table{min-width:0}thead th{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+</style></head><body>
+<div class="bar noprint"><a href="./">‹ Volver a la app</a><button type="button" id="print-btn" onclick="window.print()">Imprimir esta hoja</button><a href="log-sheet.html" lang="en" hreflang="en">In English</a></div>
+<p class="tip noprint">Consejo: imprima varias copias. En un teléfono, use Compartir → Imprimir, o Imprimir → Guardar como PDF.</p>
+<main id="sheet"><h1>Registro semanal de diálisis</h1><p class="sub">Llénela a mano. Escriba solo los números que usted mide y el límite que le dio su equipo de atención.</p>
+<div class="meta"><div>Nombre:</div><div>Semana del:</div><div>Límite diario de líquidos de su equipo de atención:</div></div>
+<div class="wrap"><table id="log-table"><thead><tr><th scope="col">Día / fecha</th><th scope="col">¿Sesión?</th><th scope="col">Peso antes</th><th scope="col">Peso después</th><th scope="col">PA antes</th><th scope="col">PA después</th><th scope="col">Líquido retirado (UF)</th><th scope="col" class="drinks">Bebidas de hoy (marcas o total)</th><th scope="col" class="notes">Notas</th></tr></thead><tbody><tr><th scope="row">Lun<span class="d"></span></th><td class="yn">Sí / No</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><th scope="row">Mar<span class="d"></span></th><td class="yn">Sí / No</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><th scope="row">Mié<span class="d"></span></th><td class="yn">Sí / No</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><th scope="row">Jue<span class="d"></span></th><td class="yn">Sí / No</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><th scope="row">Vie<span class="d"></span></th><td class="yn">Sí / No</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><th scope="row">Sáb<span class="d"></span></th><td class="yn">Sí / No</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><th scope="row">Dom<span class="d"></span></th><td class="yn">Sí / No</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></tbody></table></div>
+<div class="foot"><div id="qr" aria-label="Código QR que abre Dialysis Log" role="img"></div><div><b>Dialysis Log</b> – App gratis, sin cuenta, funciona sin internet:<br><span id="app-link">pattersonslade-rgb.github.io/dialysis</span><br>No es consejo médico. Esta hoja solo registra los números que usted escribe. Siga siempre a su equipo de atención médica.</div></div>
+</main>
+<script src="vendor/qrcode.js"></script>
+<script>(function(){try{var q=qrcode(0,'M');q.addData('https://pattersonslade-rgb.github.io/dialysis/?ref=print');q.make();var n=q.getModuleCount(),m=2,d='';for(var r=0;r<n;r++)for(var c=0;c<n;c++)if(q.isDark(r,c))d+='M'+(c+m)+' '+(r+m)+'h1v1h-1z';document.getElementById('qr').innerHTML='<svg viewBox="0 0 '+(n+2*m)+' '+(n+2*m)+'" shape-rendering="crispEdges"><rect width="100%" height="100%" fill="#fff"/><path d="'+d+'" fill="#000"/></svg>';}catch(e){}
+if('serviceWorker' in navigator&&location.protocol!=='file:')navigator.serviceWorker.register('sw.js').catch(function(){});})();</script>
+</body></html>

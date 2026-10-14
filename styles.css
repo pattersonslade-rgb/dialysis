@@ -53,3 +53,7 @@ ul.tsum{margin:0;padding-left:1.1em}ul.tsum li{margin:0 0 10px}
 .agree{display:flex;gap:14px;align-items:flex-start;min-height:56px;padding:14px;margin:16px 0;border:3px solid var(--fg);border-radius:14px;font-weight:700;cursor:pointer}
 .agree input{width:32px;height:32px;min-width:32px;margin:2px 0 0;accent-color:var(--pri)}
 @media print{nav.tabs,.noprint,#toast{display:none!important}body{padding:0;font-size:12pt}.card{border:1px solid #000}}
+
+/* v1.2.0: share card + QR */
+.qr-wrap{display:flex;justify-content:center;margin:8px 0 14px}
+.qr{width:220px;height:220px;max-width:70vw;max-height:70vw;border:10px solid #fff;border-radius:12px;background:#fff}

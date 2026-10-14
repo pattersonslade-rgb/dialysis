@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://pattersonslade-rgb.github.io/dialysis/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://pattersonslade-rgb.github.io/dialysis/</loc><lastmod>2026-10-14</lastmod></url>
   <url><loc>https://pattersonslade-rgb.github.io/dialysis/privacy.html</loc><lastmod>2026-10-11</lastmod></url>
-  <url><loc>https://pattersonslade-rgb.github.io/dialysis/terms.html</loc><lastmod>2026-10-11</lastmod></url>
+  <url><loc>https://pattersonslade-rgb.github.io/dialysis/terms.html</loc><lastmod>2026-10-14</lastmod></url>
+  <url><loc>https://pattersonslade-rgb.github.io/dialysis/?lang=es</loc><lastmod>2026-10-14</lastmod></url>
+  <url><loc>https://pattersonslade-rgb.github.io/dialysis/terms-es.html</loc><lastmod>2026-10-14</lastmod></url>
+  <url><loc>https://pattersonslade-rgb.github.io/dialysis/privacy-es.html</loc><lastmod>2026-10-14</lastmod></url>
+  <url><loc>https://pattersonslade-rgb.github.io/dialysis/log-sheet.html</loc><lastmod>2026-10-14</lastmod></url>
+  <url><loc>https://pattersonslade-rgb.github.io/dialysis/log-sheet-es.html</loc><lastmod>2026-10-14</lastmod></url>
 </urlset>
