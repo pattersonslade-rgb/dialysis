@@ -10,8 +10,8 @@ window.DIALYSIS_CONFIG = {
   APP_NAME: "Dialysis Log",
   PRO_PRICE: "$4.99",                         // matches Gumroad (price_cents 499, USD, fixed price) checked Oct 11, 2026
   PRO_PRICE_NOTE: "One-time. No subscription.",
-  CHECKOUT_URL: "https://sladepatterson.gumroad.com/l/aeklk", // Gumroad product page for "Dialysis Log Pro"
-  GUMROAD_PRODUCT_ID: "iJvHWo0Z03uhw7LEoJTuxA==", // matches the id on sladepatterson.gumroad.com
+  CHECKOUT_URL: "https://pocketappstudio.gumroad.com/l/aeklk", // Gumroad product page for "Dialysis Log Pro"
+  GUMROAD_PRODUCT_ID: "iJvHWo0Z03uhw7LEoJTuxA==", // matches the id on pocketappstudio.gumroad.com
   LICENSE_VERIFY_URL: "https://api.gumroad.com/v2/licenses/verify",
   MAX_ACTIVATIONS: 5,
   RECHECK_DAYS: 30,
