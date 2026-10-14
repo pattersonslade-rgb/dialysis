@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://pattersonslade-rgb.github.io/dialysis/sitemap.xml
+Sitemap: https://pocketappstudio.github.io/dialysis/sitemap.xml

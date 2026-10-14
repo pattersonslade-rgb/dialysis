@@ -10,7 +10,7 @@
   function termsOk() { var r = termsRecord(); return !!(r && r.version === TERMS_VERSION && r.agreed === true); }
   var ML_PER_OZ = 29.5735;
   var S;
-  var APP_URL = 'https://pattersonslade-rgb.github.io/dialysis/';
+  var APP_URL = 'https://pocketappstudio.github.io/dialysis/';
   /* ---------------- language (English / Spanish). Strings are keyed by their English text; see i18n-es.js. ---------------- */
   var ES = (window.DIALYSIS_I18N && window.DIALYSIS_I18N.es) || {};
   function lang() { var p = S && S.settings && S.settings.lang; if (p === 'en' || p === 'es') return p; return /^es\b/i.test(navigator.language || '') ? 'es' : 'en'; }
