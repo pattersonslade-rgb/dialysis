@@ -25,3 +25,4 @@ Tests: `/workspace/dialysis-tests/test_app.py` (Playwright, Gumroad mocked).
 - **Share this app** (More): QR generated offline with vendored `vendor/qrcode.js` (qrcode-generator, MIT, © Kazuhiko Arase) linking `?ref=qr`, native share/copy link with `?ref=share`.
 - Terms now name the operator only as “Dialysis Log”; `TERMS_VERSION` → 2026-10-14 (users re-agree once).
 - Support and refunds go through Gumroad only. No email address anywhere.
+- Spanish text (`i18n-es.js`, `*-es.html`) is machine-prepared; review by a native Spanish speaker is recommended.

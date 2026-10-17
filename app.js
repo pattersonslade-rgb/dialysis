@@ -209,7 +209,7 @@
       T('<p class="small"><a href="#/settings">Change drink buttons</a></p>') +
       T('<h2>Today’s drinks</h2>') + (entries.length ? '<ul class="list" id="today-list">' + entries.map(entryLi).join('') + '</ul>' : T('<p class="muted" id="today-list">Nothing logged yet today.</p>')) +
       T('<p><a class="btn alt" href="#/history">See past days</a></p>') +
-      '<div class="card" id="share-today"><h3>' + T('Share today') + '</h3><p class="small">' + T('Send today’s numbers to a caregiver or family member as a plain text message.') + '</p><button class="btn alt" data-act="share-summary" id="share-summary">' + T('Send today’s summary') + '</button></div>' + disc() + '</main>' + nav('#/');
+      '<div class="card" id="share-today"><h3>' + T('Share today') + '</h3><p class="small">' + T('Send today’s numbers to a caregiver or family member as a plain text message.') + '</p><p class="small">' + T('You choose who gets this. Only share it with people you trust.') + '</p><button class="btn alt" data-act="share-summary" id="share-summary">' + T('Send today’s summary') + '</button></div>' + disc() + '</main>' + nav('#/');
   }
   function entryLi(f) { return '<li><div class="grow"><b>' + fmtFluid(f.ml) + '</b> ' + esc(f.label || '') + '<div class="small muted">' + fmtTime(f.t) + '</div></div><button class="btn sm alt" data-act="edit-fluid" data-id="' + esc(f.id) + T('" aria-label="Edit ') + fmtFluid(f.ml) + T(' at ') + fmtTime(f.t) + T('">Edit</button></li>'); }
 

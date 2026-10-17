@@ -281,5 +281,6 @@ window.DIALYSIS_I18N = { es: {
  "Copy link": "Copiar enlace",
  "Printable blank log sheet": "Hoja de registro en blanco para imprimir",
  "A free paper sheet for the week, for days away from your phone.": "Una hoja de papel gratis para la semana, para los días sin su teléfono.",
- "Free dialysis & fluid tracker. No account, works offline:": "Registro gratis de diálisis y líquidos. Sin cuenta, funciona sin internet:"
+ "Free dialysis & fluid tracker. No account, works offline:": "Registro gratis de diálisis y líquidos. Sin cuenta, funciona sin internet:",
+ "You choose who gets this. Only share it with people you trust.": "Usted decide quién lo recibe. Compártalo solo con personas de confianza."
 } };
